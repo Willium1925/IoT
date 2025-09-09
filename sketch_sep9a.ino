@@ -6,6 +6,7 @@ void setup() {
   // 想像我是板子，所以我要發訊號給led燈
   pinMode(LED_BUILTIN, OUTPUT);
 
+  Serial.begin(115200);
 }
 
 void loop() {
@@ -21,5 +22,8 @@ void loop() {
   delay(1000);
 
   // 用的空間越大，越消耗電池，所以嵌入式系統通常會講求有效分配，例如使用恰當的變數類型
+
+  Serial.println("Hello Computer");
+  delay(500);
 
 }
