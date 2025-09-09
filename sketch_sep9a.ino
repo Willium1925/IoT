@@ -20,4 +20,6 @@ void loop() {
   digitalWrite(LED_BUILTIN, LOW);
   delay(1000);
 
+  // 用的空間越大，越消耗電池，所以嵌入式系統通常會講求有效分配，例如使用恰當的變數類型
+
 }
