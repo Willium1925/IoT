@@ -3,7 +3,7 @@ void setup() {
   // 初始化區塊
   // 通訊相關，pin就是腳
   // 使用內建的led的那隻腳
-  // 想像我是板子，所以我要發訊號給led燈，安安
+  // 想像我是板子，所以我要發訊號給led燈
   pinMode(LED_BUILTIN, OUTPUT);
 
 }
