@@ -2,14 +2,19 @@
 #define G_PIN 33
 #define B_PIN 25
 
+  // 按了開關後計數增加
   int count = 0;
+
+  // 記錄每個顏色的狀態
   int rNow = 0;
   int gNow = 0;
   int bNow = 0;
 
 void setup() {
   // put your setup code here, to run once:
+
   Serial.begin(115200);
+  // RGB 燈的個別腳位
   pinMode(R_PIN, OUTPUT);
   pinMode(G_PIN, OUTPUT);  
   pinMode(B_PIN, OUTPUT);  
@@ -18,16 +23,21 @@ void setup() {
   digitalWrite(G_PIN, LOW);
   digitalWrite(B_PIN, LOW);
 
+  // 開關
   pinMode(16, INPUT_PULLUP); // 平常是高電位
 
+  // 可變電阻
   pinMode(13, INPUT);
 
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
+  
+  // 開關，平時是1，按了變0
   bool p16 = digitalRead(16);
 
+  // 可變電阻的4096轉255，下面配合把 digitalWrite 改成 analogWrite
   int x = analogRead(13);
   float xf = x/16;
 
