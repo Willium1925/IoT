@@ -3,6 +3,9 @@
 #define B_PIN 25
 
   int count = 0;
+  int rNow = 0;
+  int gNow = 0;
+  int bNow = 0;
 
 void setup() {
   // put your setup code here, to run once:
@@ -17,6 +20,7 @@ void setup() {
 
   pinMode(16, INPUT_PULLUP); // 平常是高電位
 
+  pinMode(13, INPUT);
 
 }
 
@@ -24,19 +28,58 @@ void loop() {
   // put your main code here, to run repeatedly:
   bool p16 = digitalRead(16);
 
+  int x = analogRead(13);
+  float xf = x/16;
+
   if(p16 == 0) {
     count++;
     delay(500);
   }
 
-  if(count > 7) {
+  if(count > 2) {
     count = 0;
   }
 
   Serial.println(p16);
   delay(100);
+  Serial.println(count);
+  delay(100);
+
 
   switch(count){
+    case 0:
+        analogWrite(R_PIN, xf);
+        analogWrite(G_PIN, gNow);
+        analogWrite(B_PIN, bNow);
+        rNow = xf;
+        break;
+    case 1:
+        analogWrite(R_PIN, rNow);
+        analogWrite(G_PIN, xf);
+        analogWrite(B_PIN, bNow);
+        gNow = xf;
+        break;
+    case 2:
+        analogWrite(R_PIN, rNow);
+        analogWrite(G_PIN, gNow);
+        analogWrite(B_PIN, xf);
+        bNow = xf;
+        break;
+  }
+
+  /*digitalWrite(R_PIN, HIGH);
+  delay(100);
+  digitalWrite(R_PIN, LOW);
+
+  digitalWrite(G_PIN, HIGH);
+  delay(100);
+  digitalWrite(G_PIN, LOW);
+
+  digitalWrite(B_PIN, HIGH);
+  delay(100);
+  digitalWrite(B_PIN, LOW);*/
+
+    /*switch(count){
     case 0:
         digitalWrite(R_PIN, LOW);
         digitalWrite(G_PIN, LOW);
@@ -77,18 +120,6 @@ void loop() {
         digitalWrite(G_PIN, HIGH);
         digitalWrite(B_PIN, HIGH);
         break;       
-  }
-
-  /*digitalWrite(R_PIN, HIGH);
-  delay(100);
-  digitalWrite(R_PIN, LOW);
-
-  digitalWrite(G_PIN, HIGH);
-  delay(100);
-  digitalWrite(G_PIN, LOW);
-
-  digitalWrite(B_PIN, HIGH);
-  delay(100);
-  digitalWrite(B_PIN, LOW);*/
+  }*/
 
 }
