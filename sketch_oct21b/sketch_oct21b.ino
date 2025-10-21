@@ -24,14 +24,13 @@ void loop() {
 
 }
 unsigned long ping(){
+  // 方形波的低5秒，高10秒，再回到低，等於打出一個10微秒的波
   digitalWrite(TrigPin, LOW);
   delayMicroseconds(5);
   digitalWrite(TrigPin, HIGH);
   delayMicroseconds(10);
   digitalWrite(TrigPin, LOW);
 
+  // 會自動計算打出去後到接收回覆的瞬間的時間差
   return pulseIn(EchoPin, HIGH);
 }
-// 方形波的低5秒，高10秒
-// 會自動計算打出去後到接收回覆的瞬間的時間差
-// 公分
