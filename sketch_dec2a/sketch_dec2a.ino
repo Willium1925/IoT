@@ -1,3 +1,5 @@
+// preference github
+
 #define BLYNK_PRINT Serial
 // 複製自己的
 // https://sgp1.blynk.cloud/dashboard/943968/global/devices/1/organization/943968/devices/3677281/dashboard
